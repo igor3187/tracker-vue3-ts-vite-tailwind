@@ -27,7 +27,7 @@ export const resetTimelineItemActivity = (timelineItems, activity) => {
     timelineItems.value
     filterTimelineItemsByActivity(timelineItems,activity).forEach(timelineItem => updateTimelineItem(timelineItem, {
         activityId: null,
-        activitySeconds: 0,
+        activitySeconds: timelineItem.hour === currentHour() ? timelineItem.activitySeconds : 0,
     }))
 }
 export const scrollToHour = (hour, isSmooth = true) => {

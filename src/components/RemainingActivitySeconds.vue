@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {formatSeconds} from '@/functions'
+import {formatSecondsWithSign} from '@/functions'
 import {calculateTrackedActivitySeconds, timelineItems} from '@/timelineItems'
 import {isActivityValid} from '@/validators'
 import {computed} from "vue";
@@ -17,13 +17,11 @@ const classes = computed(() => [
     'flex items-center rounded px-2 font-mono text-xl',
     remainingSeconds.value < 0 ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-600',
 ])
-const sign = computed(() => remainingSeconds.value >= 0 ? '+' : '-')
-const seconds = computed(() => `${sign.value}${formatSeconds(remainingSeconds.value)}`)
 </script>
 
 <template>
     <div :class="classes">
-        {{ seconds}}
+        {{ formatSecondsWithSign(remainingSeconds)}}
     </div>
 </template>
 

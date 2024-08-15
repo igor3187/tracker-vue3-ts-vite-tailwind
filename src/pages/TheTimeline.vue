@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import TimeLineItem from '@/pages/TimelineItem.vue'
+import TheTimelineIndicator from '@/components/TheTimelineIndicator.vue'
 import {onActivated} from 'vue'
-import {timelineItems, timelineItemRefs, scrollToHour, scrollToCurrentHour} from '@/timelineItems'
+import {timelineItems, timelineItemRefs, scrollToCurrentHour} from '@/timelineItems'
 
 // watchPostEffect(async () => {
 //     if (currentPage.value === PAGE_TIMELINE) {
@@ -13,7 +14,8 @@ onActivated(scrollToCurrentHour)
 </script>
 
 <template>
-    <div class="mt-7">
+    <div class="relative mt-7">
+        <TheTimelineIndicator />
         <ul>
             <TimeLineItem
                 v-for="timelineItem in timelineItems"
